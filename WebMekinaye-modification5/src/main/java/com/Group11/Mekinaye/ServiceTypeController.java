@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,27 +20,21 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
-@RequestMapping("/service")
+@RequestMapping("/service/current")
 @SessionAttributes("maintaitainanceorder")
 @RequiredArgsConstructor
 public class ServiceTypeController {
     private final ServiceTypeRepository repository;
-    /*public void lettheUserselectService(Model model){
-        
 
-Type[] u =ServiceType.Type.values();
-*/
-    
 
-    
     @GetMapping
-    public String serviceType(Model Mymodel) {
-Mymodel.addAttribute("serviceType",new Services());
+    public String serviceType(Model model) {
+model.addAttribute("serviceType",new Services());
 Type[] types=Type.values();
 List<ServiceType>maintainances=new ArrayList<>();
 this.repository.findAll().forEach(s->maintainances.add(s));
 for (Type type: types){
-    Mymodel.addAttribute(type.toString().toLowerCase(), filterByType(maintainances,type));}
+    model.addAttribute(type.toString().toLowerCase(), filterByType(maintainances,type));}
 
         return "ServiceType";
     } 
@@ -60,7 +53,7 @@ for (Type type: types){
             return "ServiceType";
         }
         log.info("processing the service"+service);
-        return "redirect:/order/current";
+        return "redirect:/rating/current";
 
     }
     

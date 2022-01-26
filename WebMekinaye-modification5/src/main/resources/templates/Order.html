@@ -1,99 +1,15 @@
-<!----<,!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
-</head>
-<body>
-    <div class="container">
-    
-    <h1>Order Form</h1>
-    <p>Just a few steps left to place your order!</p>
-
-    <form>
-        <p>Please input your user ID: <input type="text" name="username" size="15" maxlength="30"><br><br></p>
-    </form>
-
-    <form>
-        <p>Please input your name: <input type="text" name="username" size="15" maxlength="30"><br><br></p>
-    </form>
-
-    <form>
-        <p>Please input your location: <input type="text" name="username" size="15" maxlength="30"><br><br></p>
-    </form>
-
-    <form>
-        <p>Phone Number: <input type="text" name="tele" size="15" maxlength="30"><br><br></p>
-    </form>
-
-     ----To input a preffered maintaince provider-----
-     <form>
-        <p>Do you have a preffered service provider(for maintainance)?     
-            <select name="device">
-            <option value="ServiceProv1">ServiceProv1</option>
-            <option value="ServiceProv2">ServiceProv2</option>
-            <option value="ServiceProv3">ServiceProv3</option>
-            <option value="no">No</option>
-            <option value="other">Other</option><br><br>
-        </select></p>
-    </form>
-    
-    
-    ---To input a preffered gasoline provider---
-    <form>
-    <p>Do you have a preffered service provider(for gasoline)?</p>
-    <select name="instruments" size="3" multiple="multiple">
-        <option value="guitar" selected="selected">guitar</option>
-        <option value="drums">drums</option>
-        <option value="keyboard" selected="selected">keyboard</option>
-        <option value="bass">bass</option><br><br>
-    </select>
-    </form>
-
-    <form>
-        <p>Do you have a preffered method of payment?     
-            <select name="device">
-            <option value="MobBank">Mobile Banking</option>
-            <option value="InCash">In Cash</option>
-            <option value="no">No</option>
-            <option value="other">Other</option><br><br>
-        </select></p>
-    </form>
-
-    <form>
-        <p>Overall Price: <input type="text" name="username" size="15" maxlength="30"><br><br></p>
-    </form>
-
-
-    <p>Can you describe further about your automobile malfunction?</p>
-        <textarea name="comments" cols="20"rows="4">Enter your comments here</textarea><br><br>
-    
-    <button>Place Order</button>  
-    <button>Contact HelpDesk</button>
-    
-
-
-    <script th:src="@{/js/bootstrap.bundle.min.js}">
-    </script> 
-</div>
-</body>
-</html>-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>mechinaye </title>
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" href=/css/OrderStyle.css>
 </head>
 <body>
-    <!-- <div th:replace="fragment::o"></div> -->
-<form method="POST" th:object="${deliveryOrder}">
+<form method="POST" th:object="${deliveryOrder}" th:action=@{/service/current}>
 <h3>where can we deliver the mainainance?</h3>
-<img  class="img-responsive" th:src="@{/images/car.png}"/>
+<br><br><hr><br><br>
 
 <label for="Delivery_Address">Address: </label>
 <input th:class="|form-control ${#fields.hasErrors('Delivery_Address')?'is-invalid':'is-valid'}|" 
@@ -151,8 +67,8 @@ type="number" th:field="*{ccNumber}"/>
 <div  class="invalid-feedback"
 th:if="${#fields.hasErrors('ccNumber')}"
 th:errors="*{ccNumber}"></div>
-
-<input type="submit" value="Submit Order"/>
+<form  method="post" th:action="@{/service/current}">
+<input type="submit" value="Submit Order"/></form>
 </form>
 </body>
 </html>

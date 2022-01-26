@@ -10,7 +10,7 @@ xmlns:th="http://www.thymeleaf.org">
    
 </head>
 <body>
-    <!-- <div th:replace="fragment::o"></div> -->
+   
     <div class="container">
     <h3>Login Page</h3><hr></hr>
 
@@ -19,7 +19,7 @@ xmlns:th="http://www.thymeleaf.org">
         </div>
         
         <p>New here? Click
-            <a th:href="@{/register}">here</a> to register.</p>
+         <a th:href="@{/register}">here</a> to register.</p>
 
     <form method="POST" th:object="${user}">
         <p>Username:   <input type="text" name="username" size="15" maxlength="30"><br><br> </p>
@@ -35,7 +35,7 @@ xmlns:th="http://www.thymeleaf.org">
     <!----<th:text>Are you an Admin? </th:text>ADD HERE-->
     <a href= "http://www.gmail.com">Forgot Password?</a><br>
 <br><br>
-<form method="POST">
+<form method="POST" th:action="@{/order/current}">
     <button>Login</button></form>
 
     <script th:src="@{/js/bootstrap.bundle.min.js}">

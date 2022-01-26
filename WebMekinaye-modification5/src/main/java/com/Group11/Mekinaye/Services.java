@@ -1,4 +1,8 @@
 package com.Group11.Mekinaye;
+//import java.util.ArrayList;
+import java.util.List;
+//import java.util.Set;
+
 //import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +21,7 @@ import lombok.Data;
 public class Services {
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
-  private long ID;
+  private Long ID;
   @ManyToMany
   private List<ServiceType>maintainances ;
   private DeliveryOrder order;

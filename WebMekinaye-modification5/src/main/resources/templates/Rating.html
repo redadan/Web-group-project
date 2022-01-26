@@ -7,9 +7,14 @@ xmlns:th="http://www.thymeleaf.org">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mechinaye</title>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link rel="stylesheet" href=/css/RatingStyle.css>
 </head>
 <body>
-    <!-- <div th:replace="fragment::o"></div> -->
+    <main>
+        <div class="header-img"><ul class = "nav"><a th:href = "@{Home.html}" >Home |</a> <a> Registration | </a> <a>Login | </a> <a>Order</a></ul>
+        </div>
+    </main>
+
     <div class="container">
     
         
@@ -21,7 +26,7 @@ xmlns:th="http://www.thymeleaf.org">
 
     <!-------Checkbox---------->
    
-    <form th:action="@{/Rating}" method="POST" >
+    <form th:object="${rating}"th:action="@{/}" method="POST" >
     <p> Are you a regular user of Mekinaye?:<br>
         <input type="checkbox" name="service" value="Yes">Yes<br>
 
@@ -29,7 +34,7 @@ xmlns:th="http://www.thymeleaf.org">
         <input type="checkbox" name="service" value="No">No</p><br>
 
    
-<!---<div >
+<div >
     <p><span th:text=" 'How would you rate this website?' "></span></p>
     <div >
 
@@ -37,20 +42,49 @@ xmlns:th="http://www.thymeleaf.org">
         <div><input th:text="${rating.Good}" type="checkbox" name="good" ></div>
        <div><input th:text="${rating.Bad}" type="checkbox"  name="bad"></div> 
         
-    </div>-->
+    </div>
     
     <p>Could you tell us why you chose that option?</p>
     <textarea name="comments" cols="20"rows="4">Enter your comments here</textarea><br></form>
 
-    <form method="POST" >
-        <button>go back to Home</button>
-    </form>
-    <form method="POST" th:action="@{/service/current}" >
-        <button>order another service</button>
-    </form>
+    
+        <a th:href=@{/}><button>go back to Home</button></a>
+    
+    
     <script th:src="@{/js/bootstrap.bundle.min.js}">
     </script>
     </div> 
     
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

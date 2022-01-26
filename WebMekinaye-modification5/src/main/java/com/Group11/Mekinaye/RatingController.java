@@ -20,17 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RatingController {
     private final RatingRepository repository;
-  /*  @ModelAttribute
-    public void RatingMapper(Model model){
-        List<Rating>ratings=Arrays.asList(
-            new Rating("vego",Type.very_good),
-            new Rating("good",Type.good),
-            new Rating("rBAD",Type.bad));
-            Type[] u =Rating.Type.values();
-            for (Type type: u){
-                model.addAttribute(type.toString().toLowerCase(), filterByType(ratings,type));}      
-   
-    }*/
+  
 
     @GetMapping
     public String rating(Model model ) {
@@ -38,21 +28,13 @@ public class RatingController {
         model.addAttribute("rating",ratingA);
         return "Rating";
     }  
-    /*private Iterable<Rating>filterByType(
-        List<Rating>rating,Type type)
-    {
-        
-        return rating
-        .stream()
-        .filter(x->x.getType().equals(type))
-        .collect(Collectors.toList());
-    }*/
+    
  
     
     @PostMapping
    public String returnToHomePage(Rating rating)
 {
     this.repository.save(rating);
-    return "redirect:/";
+    return "redirect:/rating/current";
 }}
 

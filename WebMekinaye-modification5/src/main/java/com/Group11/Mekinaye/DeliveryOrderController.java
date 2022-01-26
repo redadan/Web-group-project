@@ -11,7 +11,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import lombok.RequiredArgsConstructor;
 
-
+//import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/order/current")
@@ -31,6 +31,6 @@ public String showRating(@Valid DeliveryOrder order,Errors errors,SessionStatus 
     }
     this.repository.save(order);
     
-    return "redirect:/rating/current";
+    return "redirect:/service/current";
 }
 }
